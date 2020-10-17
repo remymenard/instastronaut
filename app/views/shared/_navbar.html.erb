@@ -32,7 +32,7 @@
         </div>
       </div>
       <% else %>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item has-dropdown is-hoverable min-width-150">
         <a href="" class="navbar-item"><%= current_user.full_name %></a>
         <div class="navbar-dropdown">
           <%= link_to "Pofile", edit_user_registration_path, class: "navbar-item" %>
