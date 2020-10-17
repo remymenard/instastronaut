@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bulma-rails', '~> 0.9.0'
 gem 'bulma-extensions-rails', '~> 6.2.7'
 gem 'devise', '~> 4.7.3'
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'omniauth', '~> 1.9', '>= 1.9.1'
+gem 'omniauth-facebook', '~> 7.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
