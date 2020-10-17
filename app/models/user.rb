@@ -1,11 +1,16 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  attr_accessor :current_password
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable
 
   validates :full_name, presence: true, length: { maximum: 30 }
+
+  def password_required?
+    false
+   end
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
