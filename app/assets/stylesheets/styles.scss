@@ -23,3 +23,70 @@ $sides: (top, bottom, left, right);
 .min-width-150 {
   min-width: 150px;
 }
+
+.is-horizontal-center {
+  justify-content: center;
+}
+
+.is-80vh {
+  min-height: 80vh !important;
+}
+
+.logo {
+  min-height: 60px !important;
+  min-width: 190px !important;
+}
+
+.hero-body .container {
+    max-width: 700px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap');
+
+
+* {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300 !important;
+}
+
+h1 {
+  font-weight: 700 !important;
+  font-size: 2rem !important;
+  line-height: 30px;
+}
+
+.material-shadow {
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.image.is-256x256 {
+  height: 256px;
+  width: 256px;
+}
+
+#cloud-intro{
+  background-color: #6CE5FF !important;
+  position: relative;
+  height: 100%;
+  background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
+  background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 10%,
+              url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 30%,
+              url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 20%;
+	animation: wind 70s linear infinite;
+}
+@keyframes wind{
+  0% {
+    background-position: 0 200px, 0 300px, 100px 250px;
+  }
+  100% {
+    background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+  }
+
+}

@@ -29,6 +29,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
 gem 'omniauth-facebook', '~> 7.0'
+
+gem 'font-awesome-sass'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
