@@ -5,8 +5,8 @@
     <div class="has-text-centered">
       <div class="columns is-multiline is-centered is-vcentered">
         <div class="column is-12-mobile is-6-desktop">
-          <section class="image is-256x256 center">
-            <%= image_tag 'astronaut' %>
+          <section class="image is-256x256 center m-t-30">
+            <%= image_tag 'home' %>
           </section>
         </div>
         <div class="column is-12 is-6-desktop">
@@ -16,8 +16,10 @@
           <h1>
             get famous now.
           </h1>
-          <p>Getting followers can take years.</p>
-          <p>Let experts do it for you.</p>
+          <!--<p>Getting followers can take years.</p>
+          <p>Let experts do it for you.</p>-->
+          <%= link_to 'Buy an Instagram account', form_path, class: "button is-danger is-fullwidth m-t-10 m-b-10" %>
+          <%= link_to 'I am an instagram expert', new_user_session_path, class: "button is-fullwidth" %>
         </div>
       </div>
     </div>
@@ -44,7 +46,9 @@
   <div class="column is-full-mobile is-one-third-desktop">
     <div class="card is-shady">
       <div class="card-image has-text-centered">
-        <i class="fa fa-empire"></i>
+        <div class="image is-256x256">
+          <%= image_tag 'filename' %>
+        </div>
       </div>
       <div class="card-content">
         <div class="content">
@@ -72,3 +76,16 @@
   </div>
 </div>
 </div>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5f8ff4c6f91e4b431ec6469c/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->

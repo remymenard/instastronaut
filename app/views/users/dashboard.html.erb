@@ -1,9 +1,9 @@
 <section class="section">
     <div class="container">
-        <div class="columns">
+        <div class="columns is-desktop">
 
             <!-- LEFT SIDE -->
-            <div class="column is-one-third">
+            <div class="column is-one-third-desktop is-12-mobile">
                 <div class="columns is-multiline">
 
                     <!-- Top Card -->
@@ -36,29 +36,51 @@
                                     Member since
                                   </div>
                                   <div class="media-right">
-                                    <strong><%= current_user.created_at.strftime('%b %Y') %></strong>
+                                    <strong class="has-text-weight-bold m-r-5"><%= current_user.created_at.strftime('%b %Y') %></strong>
                                   </div>
                                 </article>
                                 <hr class="h-10">
 
                                 <!-- From -->
-                                <article class="media">
-                                  <div class="media-content">
-                                    From
+                                <article>
+                                  <div class="media">
+                                    <div class="media-content">
+                                      From
+                                    </div>
+                                    <div class="media-right">
+                                      <strong id="text-from" class="has-text-weight-bold m-r-5"><%= current_user.from %></strong><i class="toggle far fa-edit" aria-controls="user-from"></i>
+                                    </div>
                                   </div>
-                                  <div class="media-right">
-                                    <strong><%= current_user.from %><i class="toggle far fa-edit" aria-controls="user-from"></i></strong>
+                                  <div class="content">
+                                    <%= form_for :user, url: users_edit_url(@user), method: :post, action: :update, remote: true, html: {id: 'user-from', class: 'is-hidden'} do |f| %>
+                                      <div class="field">
+                                        <%= f.text_field :from, autofocus: true, value: current_user.from, autocomplete: 'form', class: 'input' %>
+                                      </div>
+                                      <a class="toggle button is-light" aria-controls='user-from'>Cancel</a>
+                                      <%= f.submit "Save", class: 'button is-danger', id: 'save', disable_with: 'Saving...' %>
+                                    <% end %>
                                   </div>
                                 </article>
                                 <hr class="h-10">
 
                                 <!-- Online Status -->
-                                <article class="media">
-                                  <div class="media-content">
-                                    Status
+                                <article>
+                                  <div class="media">
+                                    <div class="media-content">
+                                      Status
+                                    </div>
+                                    <div class="media-right">
+                                      <strong class="has-text-weight-bold m-r-5"><% if current_user.status %>Online<% else %>Offline<% end %></strong>
+                                    </div>
                                   </div>
-                                  <div class="media-right">
-                                    <strong><% if current_user.status %>Online<% else %>Offline<% end %></strong>
+                                  <div class="content">
+                                    <%= form_for :user, url: users_edit_url(@user), method: :post, action: :update, html: {id: 'user-status', class: 'is-hidden'} do |f| %>
+                                      <div class="field">
+                                        <%= f.select(:status, options_for_select([["Online", true], ["Offline", false]]), {}, {class: 'select is-fullwidth'}) %>
+                                      </div>
+                                      <a class="toggle button is-light" aria-controls='user-status'>Cancel</a>
+                                      <%= f.submit "Save", class: 'button is-danger', id: 'save', disable_with: 'Saving...' %>
+                                    <% end %>
                                   </div>
                                 </article>
 
@@ -72,13 +94,28 @@
                             <div class="card-content">
 
                                 <!-- About -->
-                                <article></article>
-                                <hr class="h-10">
-
-                                <!-- Languages -->
-                                <article></article>
-                                <hr class="h-10">
-
+                                <article>
+                                  <div class="media">
+                                    <div class="media-content">
+                                      About Yourself
+                                    </div>
+                                    <div class="media-right">
+                                      <i class="toggle far fa-edit" aria-controls="user-about"></i>
+                                    </div>
+                                  </div>
+                                      <strong id="text-about" class="has-text-weight-bold m-r-5">
+                                        <%= current_user.about %>
+                                      </strong>
+                                  <div class="content">
+                                    <%= form_for :user, url: users_edit_url(@user), method: :post, remote: true, action: :update, html: {id: 'user-about', class: 'is-hidden'} do |f| %>
+                                      <div class="field">
+                                        <%= f.text_area :about, autofocus: true, value: current_user.about, autocomplete: 'form', class: 'input' %>
+                                      </div>
+                                      <a class="toggle button is-light" aria-controls='user-about'>Cancel</a>
+                                      <%= f.submit "Save", class: 'button is-danger', id: 'save-about', disable_with: 'Saving...' %>
+                                    <% end %>
+                                  </div>
+                                </article>
                                 <!-- Linked Account -->
                                 <article class="media"></article>
 
@@ -105,3 +142,27 @@
         </div>
     </div>
 </section>
+
+<script>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+$(document).ready( () => {
+  $('.toggle').on('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+  })
+
+  $('#save').on('click', async (e) => {
+    $('#text-from').text($('#user_from').val())
+    $('#user-from').toggleClass('is-hidden');
+  })
+
+  $('#save-about').on('click', async (e) => {
+    $('#text-about').text($('#user_about').val())
+    $('#user-about').toggleClass('is-hidden');
+  })
+})
+</script>
