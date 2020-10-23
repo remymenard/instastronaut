@@ -90,3 +90,31 @@ h1 {
   }
 
 }
+
+.is-block {
+  display: block;
+}
+
+.is-inline-block {
+  display: inline-block;
+}
+
+.is-margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.title-homepage {
+  font-size: 17px !important;
+  min-height: 30px;
+}
+
+.subtitles-homepage {
+  font-size: 27px;
+  padding: 4px 21%;
+}
+
+@media (max-width: 1023px) {
+  .padding-text-homepage {
+    padding: 0 200px;
+  }
+}
