@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: instastronaut_production
+  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
